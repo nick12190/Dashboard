@@ -1,4 +1,3 @@
-
 #top_cited_data_for_UK
 
 uk_2011 <- dbGetQuery(myconn, "select * from top_cited_publications_2011_uk ")

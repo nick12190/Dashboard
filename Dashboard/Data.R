@@ -20,7 +20,7 @@ cite_UK_2011
 median_UK_2011 <- median(cite_UK_2011)
 median_UK_2011
 
-  ##calculate median for cited_by, both UK and Germany for 2012
+##calculate median for cited_by, both UK and Germany for 2012
 
 cite_ger_2012 <-(ger_2012$cited_by)
 cite_ger_2012
@@ -152,92 +152,92 @@ TCP <- ggplot(df, aes(x=Year, y=median_Citation_Value, fill= Country,text= paste
 
 TCP
 
-A <- ggplotly(TCP) ## A stores the plotly valu for top cited publication(TCP)
+A <- ggplotly(TCP) ## A stores the plotly value for top cited publication(TCP)
 A
 
-#Gross expenditure on reseach and developement in PPP
+##Gross expenditure on reseach and developement in PPP
 
-               
+
 DF1 <- data.frame(GERD_performed_by_higher_education) ## Data Frame for GERD by Higher Education
 DF1
 
-Decimal <- 1000000
+Decimal <- 1000000              ##scaling
 
 graphyplot_PPP <- ggplot(df1, aes(x = year, y = value/Decimal)) + 
   geom_line(aes(color = country), size = 1, show.legend = TRUE) +
   scale_color_manual(values=c("#0db86a","#f5e810"))+ 
   theme(legend.position = "bottom")+
-   geom_point(shape=10)+ labs(x = " Years", y = "Higher Education_PPP(in millions)")
+  geom_point(shape= 1)+ labs(x = " Years", y = "Higher Education_PPP(in millions)")
 
-graphyplot_PPP
+graphyplot_PPP      ## displays the line chart for Gross  Expenditure
 
-  
 
 PPP <- ggplotly(graphyplot_PPP)
-PPP
+PPP                                   ##  displays the hoverable features of the graph
 
-## GERD as percentage
+## Gross expenditure on reseach and developement as percentage
 
-df2 <- data.frame(GERD_performed_by_higher_education_percen)
+df2 <- data.frame(GERD_performed_by_higher_education_percen)  ## Data Frame for GERD as percentage
 df2
 
 GERD_as_percentage <- ggplot(df2, aes(x = year, y = value)) + 
   geom_line(aes(color = country), size = 1, show.legend = TRUE) +
   scale_color_manual(values=c("#0db86a","#f5e810"))+ 
-  theme(legend.position = "bottom")+ geom_point(shape=10)+ labs(x = " Years", y = "Percentage of Higher Education")
+  theme(legend.position = "bottom")+  geom_point(shape= 1)+labs(x = " Years", y = "Percentage of Higher Education")
 
-GERD_as_percentage
+GERD_as_percentage                          ## displays the line chart for Gross  Expenditure as percentage
 
 EduASPercentage <- ggplotly(GERD_as_percentage)
-EduASPercentage
+EduASPercentage                                 ##  displays the hoverable features of the graph
 
-###GERD as a percntage of GDP
+##Gross expenditure on reseach and developement as a percentage of GDP
 
-df3 <- data.frame (GERD_performed_by_higher_education_percen_GDP)
+df3 <- data.frame (GERD_performed_by_higher_education_percen_GDP) ## Data Frame for GERD as percentage of GDP
 df3
 
 GERD_as_percentage_GDP <- ggplot(df3, aes(x = year, y = value)) + 
   geom_line(aes(color = country), size = 1, show.legend = TRUE) +
   scale_color_manual(values=c("#0db86a","#f5e810"))+ 
-  theme(legend.position = "bottom") + geom_point(shape=10)+ 
+  theme(legend.position = "bottom") + geom_point(shape=1)+ 
   labs(x = " Years", y = "Higher Education (Percentage of GDP)")
 
-GERD_as_percentage_GDP
+GERD_as_percentage_GDP                  ## displays the line chart for Gross  Expenditure as percentage of GDP
 
 gredPerGDP <- ggplotly(GERD_as_percentage_GDP)
-gredPerGDP
+gredPerGDP                                       ##  displays the hoverable features of the graph
 
-## Predictive Analysis(percentage of GDP )
+## Predictive Analysis (percentage of GDP ) for Germany
 
-df6_ger <- GERD_performed_by_higher_education_percen_GDP[1:6, c(4,5,6)]
+df6_ger <- GERD_performed_by_higher_education_percen_GDP[1:6, c(4,5,6)]  ## Data Frame for GERD as percentage of GDP for Germany
 df6_ger
 
 linearRegression_ger <- lm(value ~ year,  df6_ger)
-linearRegression_ger
+linearRegression_ger                                      ##Dislays the  linear Regression Value for Germany
 
-summary(linearRegression_ger) ## Multiple R-squared:  0.5195
+summary(linearRegression_ger)  ##Displays the summary of Linear Regression for Germany
 
-##UK
+##Predictive Analysis (percentage of GDP ) for United Kingdom
 
-df7_UK <- GERD_performed_by_higher_education_percen_GDP[7:12, c(4,5,6)]
+df7_UK <- GERD_performed_by_higher_education_percen_GDP[7:12, c(4,5,6)] ## Data Frame for GERD as percentage of GDP for UK
 df7_UK
 
-linearRegression <- lm(value ~ year,  df7_UK)
+linearRegression <- lm(value ~ year,  df7_UK)  ##Dislays the  linear Regression Value for UK
 linearRegression
 
-summary(linearRegression) ## Multiple R-squared:  0.7026
+summary(linearRegression) ##Displays the summary of Linear Regression for UK
 
-
-##############
+## Performing Rgression analysis for Germany
 
 Pred_Ger <- ggplot(df6_ger, aes(x= year,y= value)) + 
-   geom_point(shape=10, aes(color = "Raw Data"))+ geom_smooth(method = 'lm', aes(color = "Regression Line"))+
+  geom_point(shape=10, aes(color = "Raw Data"))+ geom_smooth(method = 'lm', aes(color = "Regression Line"))+
   labs(x = " Years", y = "Higher Education (Percentage of GDP)") +
-scale_color_manual(name = "Predictive analysis", values  = c( "Raw Data" ="darkgreen", "Regression Line" = "blue"), 
-                   guide = guide_legend(override.aes = list(linetype = c(NA, 1),
-                                                      shape = c(16, NA))))
+  scale_color_manual(name = "Predictive analysis", values  = c( "Raw Data" ="darkgreen", "Regression Line" = "blue"), 
+                     guide = guide_legend(override.aes = list(linetype = c(NA, 1),
+                                                              shape = c(16, NA))))
+Pred_Ger  ##Predictive Anaysis for Germany
 
-Pred_Ger
+
+##Performing regression Analysis for United Kingdom
 
 PA_UK <- ggplot(df7_UK, aes(x= year,y= value)) + 
   geom_point(shape=10, aes(color = "Raw Data"))+ geom_smooth(method = 'lm', aes(color = "Regression Line"))+
@@ -245,12 +245,4 @@ PA_UK <- ggplot(df7_UK, aes(x= year,y= value)) +
   scale_color_manual(name = "Predictive analysis", values  = c( "Raw Data" ="darkgreen", "Regression Line" = "blue"), 
                      guide = guide_legend(override.aes = list(linetype = c(NA, 1),
                                                               shape = c(16, NA))))
-
-PA_UK
-
-
-
-
-
-
-
+PA_UK ##Predictive Analysis for United kingdom
