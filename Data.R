@@ -20,7 +20,7 @@ cite_UK_2011
 median_UK_2011 <- median(cite_UK_2011)
 median_UK_2011
 
-  ##calculate median for cited_by, both UK and Germany for 2012
+##calculate median for cited_by, both UK and Germany for 2012
 
 cite_ger_2012 <-(ger_2012$cited_by)
 cite_ger_2012
@@ -157,7 +157,7 @@ A
 
 ##Gross expenditure on reseach and developement in PPP
 
-               
+
 DF1 <- data.frame(GERD_performed_by_higher_education) ## Data Frame for GERD by Higher Education
 DF1
 
@@ -167,7 +167,7 @@ graphyplot_PPP <- ggplot(df1, aes(x = year, y = value/Decimal)) +
   geom_line(aes(color = country), size = 1, show.legend = TRUE) +
   scale_color_manual(values=c("#0db86a","#f5e810"))+ 
   theme(legend.position = "bottom")+
-   geom_point(shape= 1)+ labs(x = " Years", y = "Higher Education_PPP(in millions)")
+  geom_point(shape= 1)+ labs(x = " Years", y = "Higher Education_PPP(in millions)")
 
 graphyplot_PPP      ## displays the line chart for Gross  Expenditure
 
@@ -229,11 +229,11 @@ summary(linearRegression) ##Displays the summary of Linear Regression for UK
 ## Performing Rgression analysis for Germany
 
 Pred_Ger <- ggplot(df6_ger, aes(x= year,y= value)) + 
-   geom_point(shape=10, aes(color = "Raw Data"))+ geom_smooth(method = 'lm', aes(color = "Regression Line"))+
+  geom_point(shape=10, aes(color = "Raw Data"))+ geom_smooth(method = 'lm', aes(color = "Regression Line"))+
   labs(x = " Years", y = "Higher Education (Percentage of GDP)") +
-scale_color_manual(name = "Predictive analysis", values  = c( "Raw Data" ="darkgreen", "Regression Line" = "blue"), 
-                   guide = guide_legend(override.aes = list(linetype = c(NA, 1),
-                                                      shape = c(16, NA))))
+  scale_color_manual(name = "Predictive analysis", values  = c( "Raw Data" ="darkgreen", "Regression Line" = "blue"), 
+                     guide = guide_legend(override.aes = list(linetype = c(NA, 1),
+                                                              shape = c(16, NA))))
 Pred_Ger  ##Predictive Anaysis for Germany
 
 
@@ -246,10 +246,3 @@ PA_UK <- ggplot(df7_UK, aes(x= year,y= value)) +
                      guide = guide_legend(override.aes = list(linetype = c(NA, 1),
                                                               shape = c(16, NA))))
 PA_UK ##Predictive Analysis for United kingdom
-
-
-
-
-
-
-

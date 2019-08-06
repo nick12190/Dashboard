@@ -14,9 +14,9 @@ ui <- dashboardPage(
                                     menuSubItem(" Higher Education (in '000 current PPP$)", tabName = "c"),
                                     menuSubItem("Percentage of Higher Education", tabName = "GERD_HE_PER"),
                                     menuSubItem("Higher Education as a percentage of GDP", tabName ="GERD_PER_GDP")),
-                                    menuItem("Predictive Analytics for GERD", tabName = "PredAna",
-                                             menuSubItem("Germany" ,tabName = "Pred_Ger"  ),
-                                             menuSubItem("United Kingdom", tabName = "PA_UK"))
+                           menuItem("Predictive Analytics for GERD", tabName = "PredAna",
+                                    menuSubItem("Germany" ,tabName = "Pred_Ger"  ),
+                                    menuSubItem("United Kingdom", tabName = "PA_UK"))
                        )),
     
     dashboardBody(
@@ -27,7 +27,7 @@ ui <- dashboardPage(
                            citations to those publications of a scientist,Department, division or Institute(s) or
                            expenditure on research and developement.The inputs to scientific productivity can be publications,
                            expenditure on research and developement."),
-                           h3 ("Top cited publication and Gross domestic expenditure(GDE) on research and developement are the two 
+                        h3 ("Top cited publication and Gross domestic expenditure(GDE) on research and developement are the two 
                                KPI's selected for Scientific productivity.")
                 ),
                 tabItem(tabName = "TCP", fluidRow( box(plotlyOutput("A", width = 800, height = 400, inline = FALSE))
@@ -36,11 +36,11 @@ ui <- dashboardPage(
                 )),
                 tabItem(tabName = "GERD_HE_PER", fluidRow(box(plotlyOutput("EduASPercentage", width = 800, height = 400, inline = FALSE)))),
                 tabItem(tabName = "GERD_PER_GDP", fluidRow(box(plotlyOutput("gredPerGDP",width = 800, height = 400, inline = FALSE)))
-                        ),
+                ),
                 tabItem(tabName = "Pred_Ger" , fluidRow(box(plotlyOutput("Pred_Ger", width = 800, height = 400, inline = FALSE)
-                        ))),
+                ))),
                 tabItem(tabName = "PA_UK",fluidRow(box(plotlyOutput("PA_UK", width = 800, height = 400, inline = FALSE) )))
-
                 
-        
-        ))))
+                
+                
+            ))))
